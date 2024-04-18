@@ -1,22 +1,25 @@
 package synchronization;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         Value v = new Value(0);
         System.out.println("Initial value: " + v.val);
 
         Adder x = new Adder(v);
         Subtractor s = new Subtractor(v);
 
-        Thread t1 = new Thread(x);
-        Thread t2 = new Thread(s);
+        ExecutorService es = Executors.newCachedThreadPool();
 
-        t1.start();
-        t2.start();
+        Future<Void> addedFuture = es.submit(x);
+        Future<Void> subtradctedFuture = es.submit(s);
 
-        // Wait for both threads to finish
-        t1.join();
-        t2.join();
+        addedFuture.get();
+        subtradctedFuture.get();
 
         System.out.println("Final value: " + v.val);
     }
