@@ -13,11 +13,14 @@ public class Adder implements Callable<Void> {
 
     @Override
     public Void call() throws Exception {
-        for(int i = 0; i < 100; i++){
-            l.lock();
-            System.out.println("Lock acquired by adder id: " + i + " ThreadName " + Thread.currentThread().getName());
-            this.v.val += 1;
-            l.unlock();
+        for(int i = 0; i < 100000; i++){
+
+//            synchronized (v) {
+//                System.out.println("Lock acquired by adder id: " + i + " ThreadName " + Thread.currentThread().getName());
+//                this.v.val += 1;
+//            }
+            this.v.increment(i);
+
         }
         return null;
     }
