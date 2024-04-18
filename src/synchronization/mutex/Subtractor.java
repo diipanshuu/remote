@@ -12,11 +12,14 @@ public class Subtractor implements Callable<Void> {
     }
     @Override
     public Void call() throws Exception {
+
         for(int i = 0; i < 100; i++){
+
             l.lock();
-            System.out.println("Lock acquired by subtractor: " + i);
+            System.out.println("Lock acquired by subtractor id: " + i + " ThreadName " + Thread.currentThread().getName());
             this.v.val -= 1;
             l.unlock();
+
         }
         return null;
     }

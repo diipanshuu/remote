@@ -15,7 +15,7 @@ public class Adder implements Callable<Void> {
     public Void call() throws Exception {
         for(int i = 0; i < 100; i++){
             l.lock();
-            System.out.println("Lock acquired by adder: " + i);
+            System.out.println("Lock acquired by adder id: " + i + " ThreadName " + Thread.currentThread().getName());
             this.v.val += 1;
             l.unlock();
         }
