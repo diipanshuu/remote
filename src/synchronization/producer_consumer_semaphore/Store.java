@@ -1,0 +1,32 @@
+package synchronization.producer_consumer_semaphore;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Store {
+    public int maxShelfs;
+    private List<Object> items;
+
+    Store(int maxShelfs) {
+        this.maxShelfs = maxShelfs;
+        items = new ArrayList<>();
+    }
+
+    public int getMaxShelfs(){
+        return maxShelfs;
+    }
+
+    public List<Object> getItems(){
+        return items;
+    }
+
+    public void addItem(){
+        System.out.println("Producer size is: " + this.items.size());
+        this.items.add(new Object());
+    }
+
+    public void removeItem(){
+        System.out.println("Consumer size is: " + this.items.size());
+        this.items.remove(this.items.size() - 1);
+    }
+}
