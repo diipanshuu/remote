@@ -1,9 +1,6 @@
 package collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Comparator_JCF {
     static class Person {
@@ -51,5 +48,4 @@ public class Comparator_JCF {
             System.out.println(person.getAge() + " " + person.getName());
         }
     }
-
 }
