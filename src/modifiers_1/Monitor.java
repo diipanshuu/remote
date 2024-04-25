@@ -1,6 +1,6 @@
 package modifiers_1;
 
-public class Monitor {
+class Monitor {
     int rollNo;
 
     Monitor(int rollNo){
